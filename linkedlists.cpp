@@ -21,6 +21,24 @@ ListNode* reverse(ListNode *A) {
 	}
 }
 
+int Solution::lPalin(ListNode* A) {
+	stack	<int> s;
+	ListNode *temp = A;
+	while(temp!=NULL) {
+		s.push(temp->val);
+		temp = temp->next;
+	}
+	temp = A;
+	while(temp!=NULL) {
+		if(s.top() !=  temp->val) {
+			return 0;
+		}
+		s.pop();
+		temp = temp->next;
+	}
+	return 1;
+}
+
 int main() {
 	return 0;
 }
