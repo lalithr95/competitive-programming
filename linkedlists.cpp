@@ -58,7 +58,7 @@ ListNode* Solution::deleteDuplicates(ListNode* A) {
 	ListNode *temp2;
 	temp = A;
 	while(temp!=NULL) {
-		if(m[temp->val] == 1) {
+		if(m[temp->val] > 0) {
 			if(head == NULL) {
 				temp2 = (ListNode *)malloc(1*sizeof(ListNode));
 				temp2->val = temp->val;
@@ -75,6 +75,40 @@ ListNode* Solution::deleteDuplicates(ListNode* A) {
 		temp = temp->next;
 	}
 	return head;
+}
+
+ListNode* Solution::removeNthFromEnd(ListNode* A, int B) {
+	ListNode *temp, *temp2, *prev;
+	temp = A;
+	temp2 = A;
+	int count = 0;
+	while(temp) {
+		count++;
+		temp = temp->next;
+	}
+	
+	if(count >=  B) {
+		temp = A;
+		A = temp->next;
+		temp->next = NULL;
+		return A;
+	}
+	else {
+		
+		while(B-- > 0) {
+			temp = temp->next;
+		}
+		while(temp!=NULL) {
+			temp = temp->next;
+			temp2 = temp2->next;
+			prev = temp2;
+			
+		}
+		prev->next = temp2->next;
+		return A;
+	}
+	
+	
 }
 
 
